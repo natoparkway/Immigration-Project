@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Immigration Project</title>
+        <meta charset="utf-8" />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="stylesheets/bootstrap.css" />
+        <link rel="stylesheet" href="stylesheets/style.css" />
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700" />
+    </head>
+
+    <body>
+        <header id="title-bar">
+            <div class="row">
+                <h1 id="english-title">Citizenship Test</h1>
+                <h1 id="spanish-title">Examen de Ciudadadanía</h1>
+            </div>
+       </header>
+
+        <div class="container-fluid" id="main-page">
+            <div class="row" id="top-language-choice">
+                <p class="language-choice">In what language do you want to take the test?</p>
+            </div>
+            
+            <div class="row" id="bottom-language-choice">
+                <p class="language-choice">En que idioma quiere usted tomar el examen?</p>
+            </div>
+
+            <div class="text-center" id="spanish-button-div">
+                <button id="choose-spanish" class="btn btn-lg btn-success" type="button"> Español </button>
+            </div>
+         
+            <div class="text-center">
+                <button id="choose-english" class="btn btn-lg btn-success" type="button"> English </button>
+            </div>
+        </div>
+
+        <!-- template to display test question -->
+         <script type="text/x-handlebars-template" id="question-template">
+            <h2>{{question}}</h2>
+            <h4>{{hint}}</h4>
+        </script>
+
+        <!-- template to display introduction to test -->
+         <script type="text/x-handlebars-template" id="introduction-template">
+            <h2>{{line1}}</h2>
+            <p class='medium-line-break'></p>
+            <div class='information'>{{line2}}</div>
+            <p class='small-line-break'></p>
+            <div class='information'>{{line3}}</div>
+            <p class='large-line-break'></p>
+            <div class="text-center">
+                <button class='text-center btn btn-lg btn-info'>100</button>
+            </div>
+            <p class='medium-line-break'></p>
+            <div class="text-center">
+                <button class='text-center btn btn-lg btn-info'>50</button>
+            </div>
+            <p class='medium-line-break'></p>
+            <div class="text-center">
+                <button class='text-center btn btn-lg btn-info'>20</button>
+            </div>
+        </script>
+
+        <!-- Libraries -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>  
+        
+        <!-- JavaScript -->
+        <script type="text/javascript" src="javascripts/handlebars.js"></script>
+        <script type="text/javascript" src="javascripts/script.js"></script>  
+
+
+
+    </body>
+
+</html>
