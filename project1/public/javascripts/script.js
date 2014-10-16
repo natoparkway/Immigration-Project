@@ -25,12 +25,7 @@ function addOpeningScreenButtonListener() {
 		} else if (event.target.id === 'choose-spanish') {
 			createWelcomePage('spanish');
 		} else if (event.target.id === 'choose-english') {
-			//createWelcomePage('english');
-			var request = new XMLHttpRequest();
-
-			request.open('GET', '/helloworld');
-			request.send();
-
+			createWelcomePage('english');
 		}
 	});
 
@@ -44,7 +39,19 @@ function addOpeningScreenButtonListener() {
 function createWelcomePage(language) {
 	shrinkTitle(language);
 	introduceTest(language);
+	addTestSpecificationsListeners(language);
+}
 
+function addTestSpecificationsListeners(language) {
+	$('#main-page').click(function(event) {
+		if(event.target.nodeName != 'BUTTON') {
+			event.preventDefault();
+			return;
+		} else {
+			var numQuestions = event.target.firstChild.nodeValue;
+			TestTakingView.startTest(numQuestions, language);
+		}
+	});
 }
 
 /**
