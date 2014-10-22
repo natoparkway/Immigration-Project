@@ -1,0 +1,15 @@
+.question {
+	font-size: 40px;
+}
+
+#answers {
+	padding-top: 2%
+}
+
+.question-row {
+	margin-top: 20px;
+}
+
+.variable-text-size {
+	font-size: 100%;
+}
