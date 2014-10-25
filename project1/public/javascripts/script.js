@@ -3,11 +3,7 @@
 var $openingScreen = $('#main-page');
 var $questionTemplate = $('#question-template');
 var $introTemplate = $('#introduction-template');
-var questions = [
-	{question: "Will this work?",
-	hint: "I don't know"
-	}
-];
+
 
 var handlebarsTemplates = {
 	renderQuestionForm: Handlebars.compile($questionTemplate.html()),
@@ -15,8 +11,14 @@ var handlebarsTemplates = {
 };
 
 
-addOpeningScreenButtonListener();
+//addOpeningScreenButtonListener();
+TestTakingView.startTest(20, 'english');
 
+/*
+ * Adds button listeners to the opening screen that detech whether a button indicating the user's language
+ * preference is picked.
+ * Method then calls createWelcomePage.
+ */
 function addOpeningScreenButtonListener() {
 	$openingScreen.click(function(event) {
 		if(event.target.type != 'button') {
@@ -95,12 +97,6 @@ function shrinkTitle(language) {
 	$titleBar.css('height', titleBarHeight);
 }
 
-function chooseRandomQuestion() {
-	var currentQuestion = questions[0];
-
-	var newQuestion = handlebarsTemplates.renderQuestionForm(currentQuestion);
-	$openingScreen.html(newQuestion);
-}
 
 
 })(this, this.document);

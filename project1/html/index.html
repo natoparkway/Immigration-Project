@@ -7,6 +7,7 @@
         <!-- CSS -->
         <link rel="stylesheet" href="stylesheets/bootstrap.css" />
         <link rel="stylesheet" href="stylesheets/style.css" />
+        <link rel="stylesheet" href="stylesheets/questions_style.css" />
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700" />
     </head>
 
@@ -38,8 +39,34 @@
 
         <!-- template to display test question -->
          <script type="text/x-handlebars-template" id="question-template">
-            <h2>{{question}}</h2>
-            <h4>{{hint}}</h4>
+            <h2>{{number}}.<h4>
+            <h2 class="question">{{question}}</h2>
+
+            <div class="container-fluid" id="answers">
+                <div class="row question-row">
+                    <div class="col-md-1"></div>
+                    {{#each row1}}
+                    <div class="col-md-3">
+                        <button class="btn btn-lg btn-success text-center variable-text-size" type="button"> {{this}} </button>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="row question-row">
+                    <div class="col-md-1"></div>
+                    {{#each row2}}
+                    <div class="col-md-3">
+                        <button class="btn btn-lg btn-success text-center variable-text-size" type="button"> {{this}} </button>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="row question-row">
+                    {{#each row3}}
+                    <div class="col-md-3">
+                        <button class="btn btn-lg btn-success text-center variable-text-size" type="button"> {{this}} </button>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
         </script>
 
         <!-- template to display introduction to test -->
@@ -68,8 +95,9 @@
         
         <!-- JavaScript -->
         <script type="text/javascript" src="javascripts/handlebars.js"></script>
-        <script type="text/javascript" src="javascripts/script.js"></script>  
         <script type = "text/javascript" src="javascripts/testtaking-view.js"></script> 
+        <script type="text/javascript" src="javascripts/script.js"></script>  
+
 
 
 
