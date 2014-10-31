@@ -11,9 +11,8 @@ var handlebarsTemplates = {
 };
 
 
-//addOpeningScreenButtonListener();
-TestTakingView.startTest(20, 'english');
-
+addOpeningScreenButtonListener();
+//TestTakingView.startTest(10, 'english');
 /*
  * Adds button listeners to the opening screen that detech whether a button indicating the user's language
  * preference is picked.

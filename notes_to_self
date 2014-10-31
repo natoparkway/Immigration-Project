@@ -1,3 +1,5 @@
-I need to change the text of the english and spanish questions and reparse so that questions looking for more than one answer really only look for one.
+Add a class when a question is either correct or incorrect so that there is a clear color.
 
-The testing methology is flawed and I need to change it.
+Make the answers form larger.
+
+Write results-view.js

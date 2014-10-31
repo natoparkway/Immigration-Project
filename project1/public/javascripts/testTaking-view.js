@@ -1,19 +1,20 @@
 (function(window, document, undefined) {
 	
-	/*
-var questions = [
-	{question: "Will this work?",
-	hint: "I don't know"
-	}
-];
-	*/
-
+	var EDIT_DIST_RATIO = 0.3;
 	var TestTakingView = {};
 	var $question_template = $('#question-template');
+	var $answer_template = $('#answer-template')
 	var $main = $('#main-page');
 	var handlebarsTemplates = {
-	renderQuestion: Handlebars.compile($question_template.html()),
+		renderQuestion: Handlebars.compile($question_template.html()),
+		renderAnswerPage: Handlebars.compile($answer_template.html())
 	};
+
+	var taken_questions = [];
+	var count;
+	var questions_array;
+	var current_question_index;
+	var language;
 
 	//Handlebars helper. Context is the array, options is the handlebars function.
 	Handlebars.registerHelper('each', function(context, options) {
@@ -32,13 +33,21 @@ var questions = [
  * Then calls takeTest, which takes care of test taking process.
  *
  */
-	TestTakingView.startTest = function(num_questions, language) {
-		var questions = createQuestionsArray(language);
-
-		takeTest(num_questions, questions, language);
+	TestTakingView.startTest = function(num_questions, chosen_language) {
+		$main.off("click");	//Take off the click listener from the previous view
+		questions_array = createQuestionsArray(chosen_language);
+		count = num_questions;
+		language = chosen_language;
+		beginTest(num_questions);
+		
 		return;
 	};
 
+/* Function: createQuestionsArray
+ * ------------------------------
+ * Parses a given test file for a JSON object containing all pertinent question information.
+ *
+ */
 	function createQuestionsArray(language, questions_array) {
 		var file;
 		if(language === 'english') file = "/questions/english_questions.JSON";
@@ -58,76 +67,136 @@ var questions = [
 		return array;
 	}
 
+/* Function: getRandom
+ * -------------------
+ * Returns a random integer between 0 and total - 1.
+ */
 	function getRandom(total) {
 		return Math.floor((Math.random() * total));
 	}
 
-	function takeTest(num_questions, questions, language) {
-		var taken_questions = [];
-
-		var question_index = getRandom(100);
-		while($.inArray(question_index, taken_questions) != -1) {
-			question_index = getRandom(100);
-		}
-		taken_questions.push(question_index);
-
-		var question_obj = questions[question_index];
+/* Function: createTestingForm
+ * -------------------
+ * Returns a random integer between 0 and total - 1.
+ */
+	function createTestingForm(question) {
+		var question_obj = question[current_question_index];
 		//Create the Question # element
 		var question_str = 'Question';
-		if(language === 'spanish') question_str = 'Pregunta';
-		question_obj.number = question_str + " " + String(question_index);
+		var answer_in_lang = 'Answer';
+		
+		if(language === 'spanish') {
+			question_str = 'Pregunta';
+			answer_in_lang = 'Repuesta';
+		}
 
-		addAnswers(question_index, questions, question_obj);
+		question_obj.number = question_str + " " + String(current_question_index + 1);
+		question_obj.answer_in_lang = answer_in_lang;
 
 		var question = handlebarsTemplates.renderQuestion(question_obj);
 		$main.html(question);
 	}
 
-	function addAnswers(question_index, questions, question_obj) {
-		var row1 = [];
-		var row2 = [];
-		var row3 = [];
-		var possible_answers = [];
-
-		var num_cols = 3;
-		var total_answers = 9;
-
-		//Finds 9 answers to random problems that are not the intended one
-		for(var j = 0; j < total_answers; j++) {
-			var index= getRandom(100);
-			while(index == question_index) index = getRandom(100);	//Don't pick the correct question
-
-			var random_question = questions[index];
-			var random_answer_index = getRandom(random_question.answers.length);
-			possible_answers.push(random_question.answers[random_answer_index]);
-			//console.log(random_answer_index, random_question.answers[random_answer_index], random_question.answers.length);
+/* Function: beginTest
+ * -------------------
+ * Begins the test.
+ *
+ */
+ 	function beginTest(num_questions) {
+		//Find an index of a question that hasn't been used before
+		current_question_index = getRandom(100);
+		while($.inArray(current_question_index, taken_questions) != -1) {
+			current_question_index = getRandom(100);
 		}
+		taken_questions.push(current_question_index);
 
-		//Add one possible correct answer at a random place in the possible answers array
-		var correct_index = getRandom(total_answers);
-		var current_question = questions[question_index];
-		var correct_answer_index = getRandom(current_question.answers.length);
-		possible_answers.splice(correct_index, 1, current_question.answers[correct_answer_index]);
+		//Create the first question form
+		createTestingForm(questions_array, language);
 
-		//Puts the answers into rows
-		for(var i = 0; i < total_answers; i++) {
-			switch(i % 3) {
-				case 0:
-					row1.push(possible_answers[i]);
-					break;
-				case 1:
-					row2.push(possible_answers[i]);
-					break;
-				case 2:
-					row3.push(possible_answers[i]);
-					break;
+		//Add listeners to sustain the test taking process
+		addListeners();
+	}
+
+	function addListeners() {
+		//Adds a listener to the main screen to detect if an answer is submitted
+		addAnswerFormListener(function(answer) {
+			count--;
+			var answers = questions_array[current_question_index].answers;
+			var alternatives = questions_array[current_question_index].alternatives;
+
+			var min_dist_ratio = 1;	//1.00 is the maximum, where the words have nothing in common
+			//Check grammatical answers
+			for(var i = 0; i < answers.length; i++) {
+				var edit_dist = new Levenshtein(answer.toLowerCase(), answers[i].toLowerCase());
+				var ratio = edit_dist / answers[i].length;
+				if(ratio < min_dist_ratio) min_dist_ratio = ratio;
 			}
-		}
 
-		question_obj.row1 = row1;
-		question_obj.row2 = row2;
-		question_obj.row3 = row3;
+			//Check alternative answers as well
+			for(var j = 0; j < alternatives.length; j++) {
+				edit_dist = new Levenshtein(answer.toLowerCase(), alternatives[j].toLowerCase());
+				ratio = edit_dist / alternatives[j].length;
+				if(ratio < min_dist_ratio) min_dist_ratio = ratio;
+			}
 
+			var correct = min_dist_ratio < EDIT_DIST_RATIO;
+			createAnswersPage(correct, answer, answers, language);
+		});
+
+		//Adds a listener to the main screen to detect if the "NEXT QUESTION" button is clicked
+		addNextButtonListener(function() {
+			if(count == 0) {
+				ResultsView.showResults();
+				return;
+			}
+			current_question_index = getRandom(100);
+			while($.inArray(current_question_index, taken_questions) != -1) {
+				current_question_index = getRandom(100);
+			}
+
+			taken_questions.push(current_question_index);
+			createTestingForm(questions_array, current_question_index);
+		});
+
+	}
+
+	function addNextButtonListener(callback) {
+		$main.click(function(event) {
+			event.preventDefault();
+			if(event.target.type === 'button') callback();
+		});
+	}
+
+	function addAnswerFormListener(callback) {
+		$main.submit(function(event) {
+			event.preventDefault();
+			if(event.target.nodeName === 'FORM') {
+				var answer = event.target['answer_input'].value;
+				callback(answer);
+			}
+		});
+	}
+
+	/*
+	 * Correct is a boolean. If true, the user input was flagged as correct
+	 */
+	function createAnswersPage(correct, answer, answers, language) {
+		var answer_page_obj = {};
+		var description;
+		if(correct && language === 'spanish') description = "es correcta";
+		if(!correct && language === 'spanish') description = "es incorrecta";
+		if(correct && language === 'english') description = "is correct";
+		if(!correct && language === 'english') description = "is incorrect";
+
+		var next_str = "Next Question";
+		if(language === 'spanish') next_str = "Proxima Pregunta";
+
+		answer_page_obj.description = description;
+		answer_page_obj.answer = answer;
+		answer_page_obj.all_answers = answers;
+		answer_page_obj.next = next_str;
+		var answer_page_html = handlebarsTemplates.renderAnswerPage(answer_page_obj);
+		$main.html(answer_page_html);
 	}
 
 
