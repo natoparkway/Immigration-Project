@@ -14,10 +14,6 @@
 	font-size: 100%;
 }
 
-#answer-container {
-	margin-top: 50px;
-}
-
 .correct-answer {
 	color: #B85C00;
 }
@@ -25,4 +21,12 @@
 .thin-row {
 	margin-top: 0px;
 	margin-bottom: 0px;
+}
+
+.incorrect-description {
+	color: #FF1919;
+}
+
+.correct-description {
+	color: #47A347;
 }

@@ -3,12 +3,16 @@ var express = require('express');
 var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('./HTML/' + 'index.html');
+  res.render('./html/' + 'index.html');
 });
 
 /* GET Hello World page. */
 router.get('/helloworld', function(req, res) {
   res.render('helloworld', { title: 'Hello, World!' });
+});
+
+router.get('/results', function(req, res) {
+    res.render('results');
 });
 
 //GET Userlist page.

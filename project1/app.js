@@ -31,7 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // we are specifying the HTML directory as another public directory
-app.use(express.static(path.join(__dirname, 'HTML')));
+app.use(express.static(path.join(__dirname, 'html')));
 
 
 //Make our db accesible to our router
@@ -42,6 +42,8 @@ app.use(function(req, res, next) {
 
 app.use('/', routes);
 app.use('/users', users);
+
+
 //app.use('/questions', questions);
 
 // catch 404 and forward to error handler

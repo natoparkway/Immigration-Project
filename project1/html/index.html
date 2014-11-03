@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Immigration Project</title>
+        <title>Citizenship Test</title>
         <meta charset="utf-8" />
 
         <!-- CSS -->
@@ -13,29 +13,23 @@
 
     <body>
         <header id="title-bar">
-            <div class="row">
-                <h1 id="english-title">Citizenship Test</h1>
-                <h1 id="spanish-title">Examen de Ciudadanía</h1>
-            </div>
+            <h1 id="english-title">Citizenship Test</h1>
+            <h1 id="spanish-title">Examen de Ciudadanía</h1>
        </header>
 
         <div class="container-fluid" id="main-page">
-            <div class="row" id="top-language-choice">
-                <p class="language-choice">In what language do you want to take the test?</p>
+            <div class="intro" id="english_intro">
+                <h2>Welcome to the U.S. Citizenship Test Website.</h2>
+                <button id="choose-english" class="btn btn-lg btn-success main_button" type="button"> English </button>
+                <p>Click above to begin the test.</p>
             </div>
-            
-            <div class="row" id="bottom-language-choice">
-                <p class="language-choice">En que idioma quiere usted tomar el examen?</p>
-            </div>
-
-            <div class="text-center" id="spanish-button-div">
-                <button id="choose-spanish" class="btn btn-lg btn-success" type="button"> Español </button>
-            </div>
-         
-            <div class="text-center">
-                <button id="choose-english" class="btn btn-lg btn-success" type="button"> English </button>
+            <div class="intro">
+                <h2>Bienvenidos al sitio web para el examen de ciudadania estadounidense.</h2>
+                <button id="choose-spanish" class="btn btn-lg btn-success main_button" type="button"> Español </button>
+                <p>Hace clic arriba para empezar el examen.</p>
             </div>
         </div>
+
 
         <!-- template to display test question -->
          <script type="text/x-handlebars-template" id="question-template">
@@ -57,12 +51,12 @@
          <div class="container-fluid">
             <div class="row">
                 <div class="col-md-10">
-                    <h1>&quot;{{answer}}&quot; <b>{{description}}</b>.</h1>
+                    <h1 id="answer-description">&quot;{{answer}}&quot; <b>{{description}}</b>.</h1>
                 </div>
                 <button type="button" class="btn btn-primary btn-lg btn-block"> {{next}} </button>
             </div>
             <div class = "row thin-row">
-                <h2 class="correct-answer"> Correct answers include: </h2>
+                <h2 class="correct-answer"> {{correct_answers_description}} </h2>
             </div>
             {{#each all_answers}}
             <div class="row">
@@ -79,22 +73,23 @@
 
         <!-- template to display introduction to test -->
          <script type="text/x-handlebars-template" id="introduction-template">
-            <h2>{{line1}}</h2>
-            <p class='medium-line-break'></p>
-            <div class='information'>{{line2}}</div>
-            <p class='small-line-break'></p>
-            <div class='information'>{{line3}}</div>
-            <p class='large-line-break'></p>
-            <div class="text-center">
-                <button class='text-center btn btn-lg btn-info' id='findThis'>100</button>
-            </div>
-            <p class='medium-line-break'></p>
-            <div class="text-center">
-                <button class='text-center btn btn-lg btn-info'>50</button>
-            </div>
-            <p class='medium-line-break'></p>
-            <div class="text-center">
-                <button class='text-center btn btn-lg btn-info'>20</button>
+            <div id="instructions">
+               <h2>{{line1}}</h2>
+               <div id="information">
+                  <p>{{line2}}</p>
+                  <p>{{line3}}</p>
+               </div>
+               <div>
+                  <button class='btn btn-lg btn-info' id='findThis'>100</button>
+                  <button class='btn btn-lg btn-info'>50</button>
+                  <button class='btn btn-lg btn-info'>20</button>
+               </div>
+               <form id="numquestions">
+                  <span>{{line4}}</span>
+                  <span>
+                     <input type="text" name="number">
+                  </span>
+               </form>
             </div>
         </script>
 
@@ -106,7 +101,8 @@
         <script type="text/javascript" src="/javascripts/levenshtein.js"></script>
         <script type = "text/javascript" src="javascripts/testTaking-view.js"></script> 
         <script type = "text/javascript" src="javascripts/results-view.js"></script> 
-        <script type="text/javascript" src="javascripts/script.js"></script>  
+        <script type="text/javascript" src="javascripts/introduction-view.js"></script> 
+        <script type="text/javascript" src="javascripts/main.js"></script>
 
 
 

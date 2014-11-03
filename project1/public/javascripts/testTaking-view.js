@@ -15,17 +15,9 @@
 	var questions_array;
 	var current_question_index;
 	var language;
+	var incorrect_answers = [];
+	var correct_answers = [];
 
-	//Handlebars helper. Context is the array, options is the handlebars function.
-	Handlebars.registerHelper('each', function(context, options) {
-  		var ret = "";
-
-  		for(var i=0, j=context.length; i<j; i++) {
-	    	ret = ret + options.fn(context[i]);
-	  	}
-
-  		return ret;
-	});
 
 /*
  * Starts the test taking process. 
@@ -35,6 +27,7 @@
  */
 	TestTakingView.startTest = function(num_questions, chosen_language) {
 		$main.off("click");	//Take off the click listener from the previous view
+		$main.off("submit");
 		questions_array = createQuestionsArray(chosen_language);
 		count = num_questions;
 		language = chosen_language;
@@ -117,6 +110,10 @@
 		addListeners();
 	}
 
+/*
+ * Adds the listeners that detect for the user hitting enter when answering a question and when 
+ * a user presses the button to signal that they are ready for the next question.
+ */
 	function addListeners() {
 		//Adds a listener to the main screen to detect if an answer is submitted
 		addAnswerFormListener(function(answer) {
@@ -145,10 +142,6 @@
 
 		//Adds a listener to the main screen to detect if the "NEXT QUESTION" button is clicked
 		addNextButtonListener(function() {
-			if(count == 0) {
-				ResultsView.showResults();
-				return;
-			}
 			current_question_index = getRandom(100);
 			while($.inArray(current_question_index, taken_questions) != -1) {
 				current_question_index = getRandom(100);
@@ -160,13 +153,22 @@
 
 	}
 
+/*
+ * Adds a listener to the main screen to listen for a button being clicked. (Specifically the button to signal 'next question')
+ */
 	function addNextButtonListener(callback) {
 		$main.click(function(event) {
 			event.preventDefault();
-			if(event.target.type === 'button') callback();
+			if(count == 0) {
+				ResultsView.showResults(correct_answers, incorrect_answers, questions_array, language);
+				return;
+			} else if(event.target.type === 'button') callback();
 		});
 	}
 
+/*
+ * Adds a listener to the main screen to listen for a form to be submitted - when the user hits submit after typing their answer.
+ */
 	function addAnswerFormListener(callback) {
 		$main.submit(function(event) {
 			event.preventDefault();
@@ -183,20 +185,36 @@
 	function createAnswersPage(correct, answer, answers, language) {
 		var answer_page_obj = {};
 		var description;
-		if(correct && language === 'spanish') description = "es correcta";
-		if(!correct && language === 'spanish') description = "es incorrecta";
-		if(correct && language === 'english') description = "is correct";
-		if(!correct && language === 'english') description = "is incorrect";
+		if(correct) {
+			if(language === 'spanish') description = "es correcta";
+			else description = "is correct";
+			correct_answers.push(current_question_index);
+
+		}
+		if(!correct) {
+			if(language === 'spanish') description = "es incorrecta";
+			else description = "is incorrect";
+			incorrect_answers.push(current_question_index);
+
+		}
 
 		var next_str = "Next Question";
-		if(language === 'spanish') next_str = "Proxima Pregunta";
+		var correct_answers_description = "Correct answers include:";
+		if(language === 'spanish') {
+			next_str = "Proxima Pregunta";
+			correct_answers_description = "Repuestas correctas incluyen:";
+		}
 
 		answer_page_obj.description = description;
 		answer_page_obj.answer = answer;
 		answer_page_obj.all_answers = answers;
 		answer_page_obj.next = next_str;
+		answer_page_obj.correct_answers_description = correct_answers_description;
 		var answer_page_html = handlebarsTemplates.renderAnswerPage(answer_page_obj);
 		$main.html(answer_page_html);
+
+		if(!correct) $main.find('#answer-description').addClass('incorrect-description');
+		else $main.find('#answer-description').addClass('correct-description');
 	}
 
 

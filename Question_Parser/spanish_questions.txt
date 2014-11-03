@@ -110,6 +110,7 @@ todas las personas del estado
 25. ¿Por que tienen algunos estados mas representantes que otros?
 (debido a) la poblacion del estado
 $la poblacion del estado
+$tienen mas poblacion
 (debido a que) tienen mas gente
 $tienen mas gente
 (debido a que) algunos estados tienen mas gente
@@ -232,6 +233,7 @@ Un hombre ciudadano de cualquier raza puede votar
 49. ¿Cual es una responsabilidad que corresponde solo a los ciudadanos de los Estados Unidos?*
 prestar servicio en un jurado
 votar en una eleccion federal
+$votar
 
 50. ¿Cual es un derecho que pueden ejercer solo los ciudadanos de los Estados Unidos?
 votar en una eleccion federal
@@ -315,7 +317,8 @@ $Jefferson
 el 4 de julio de 1776
 #$4 julio 1776
 
-64. Habia 13 estados originales. Nombre tres.
+64. Habia 13 estados originales. Nombre uno. 
+Normalmente, necesita nombre tres estados - este sita no lo puede hacerlo todavia.
 Nueva Hampshire
 Massachusetts
 Rhode Island 
@@ -424,6 +427,7 @@ Comunismo
 84. ¿Que movimiento trato de poner fin a la discriminacion racial?
 derechos civiles
 el movimiento en pro de los derechos civiles
+$movimiento de derechos civiles
 
 85. ¿Que hizo Martin Luther King, Jr.?*
 lucho por los derechos civiles

@@ -1,64 +1,111 @@
 body {
     width: 100%;
     height: 100%;
-    margin: 0px;
+    background-color: #E6E6F7; 
 }
 
+/* Header CSS */
+
 header {
-    position: relative; 
-    height: 100px;
+    text-align: center;
     background-color: #34495E; 
-    padding-top: 10px;
+    padding: 10px 0 1px 0;
+    color: #FFFFFF;
 }
 
 header h1 {
-    color: #fff;
-    padding-left: 25px;
-}
-
-h1 {
     margin-bottom: 10px;
     font-weight: bold;
     margin-top: 0px;
 }
 
-body {
-    background-color: #E6E6F7; 
+/* Home Page CSS */
+
+.main_button{
+    margin: 15px auto;
+    text-align: center;
+    display: block;
 }
 
-.language-choice {
+.intro{
+    display: inline-block;
+    float: left;
+    width: 50%;
+    height: 100vh;
+    padding: 10px 5%;
+    text-align: center;
+    
+}
+
+.intro h2{
+    padding-bottom: 10px;
+    height: 120px;
+}
+
+.intro p{
+    padding-top: 10px;
     font-size: 200%;
-    padding-left: 10px;
 }
 
-.end-title {
-    text-right
+#english_intro{
+    border-right: 2px solid black;
 }
 
-#bottom-language-choice {
-    margin-bottom: 100px;
+/* Instruction Page CSS */
+
+#instructions{
+    text-align: center;
+    width: 66%;
+    margin: 0 auto;
 }
 
-#spanish-button-div {
-    margin-bottom: 30px;
+#information{
+    font-size: 22px;
+    padding: 15px 0;
+    line-height: 130%;
 }
 
-#top-language-choice {
-    margin-top: 5px;
+#information p{
+    padding-bottom: 10px;
 }
 
-.information {
-    font-size: 28px;
+#instructions div button{
+    margin: 0 15px;
 }
 
-.small-line-break {
-    margin: 5px;
+#instructions form{
+    display: block;
+    font-size: 22px;
+    margin-top: 25px;
 }
 
-.medium-line-break {
-    height: 15px;
+#instructions form span{
+    display: block;
+    padding-bottom: 15px;
 }
 
-.large-line-break {
-    height: 35px;
+/* Question Page CSS */
+
+#question_form{
+    width: 66%;
+    margin: 0 auto;
+}
+
+#answer-container{
+    margin: 25px auto;
+}
+
+#answer-container form{
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#answer-container form label{
+    font-size: 120%;
+    padding-right: 5px;
+}
+
+#answer-container form input{
+    width: 80%;
 }
