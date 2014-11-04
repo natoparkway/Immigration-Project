@@ -91,6 +91,10 @@ header h1 {
     margin: 0 auto;
 }
 
+#question_form h2{
+    font-size: 40px;
+}
+
 #answer-container{
     margin: 25px auto;
 }
@@ -108,4 +112,24 @@ header h1 {
 
 #answer-container form input{
     width: 80%;
+}
+
+/* Solution Form CSS */
+
+#solution_form{
+    width: 66%;
+    margin: 0 auto;
+}
+
+#solution_form h1{
+    padding-bottom: 10px;
+}
+
+#solution_form h2, solution_form ul *{
+    color: #B85C00;
+}
+
+#solution_form ul li{
+    list-style: disc outside none;
+    font-size: 24px;
 }

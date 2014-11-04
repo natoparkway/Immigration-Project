@@ -1,34 +1,40 @@
 (function(window, document, undefined) {
 
-var introductionView = {};
-
 var $openingScreen = $('#main-page');
 var $questionTemplate = $('#question-template');
 var $introTemplate = $('#introduction-template');
 
-
-var handlebarsTemplates = {
-	renderQuestionForm: Handlebars.compile($questionTemplate.html()),
-	renderIntroForm: Handlebars.compile($introTemplate.html())
-};
+addOpeningScreenButtonListener();
 
 /*
  * Adds button listeners to the opening screen that detech whether a button indicating the user's language
  * preference is picked.
  * Method then calls createWelcomePage.
  */
-introductionView.introduce = function addOpeningScreenButtonListener() {
+function addOpeningScreenButtonListener() {
 	$openingScreen.click(function(event) {
 		if(event.target.type != 'button') {
 			event.preventDefault();
 			return;
 		} else if (event.target.id === 'choose-spanish') {
-			createWelcomePage('spanish');
+			console.log('spanish');
+			renderNextScreen('spanish');
 		} else if (event.target.id === 'choose-english') {
-			createWelcomePage('english');
+			console.log('english');
+			renderNextScreen('english');
 		}
 	});
+}
 
+function renderNextScreen(language) {
+	$.get('/' + language, {
+		line1: 'Welcome! You are about to take the exam portion of the United States Citizenship Test.',
+		line2: 'The exam is 100 questions long. Right now, you may take all 100 questions, 50 questions or 20 questions.',
+		line3: 'Please choose below.',
+		line4: 'Or, type the number of questions you want to answer below:'
+	}, function(data) {
+		console.log('hi', data);
+	}, 'json');
 }
 
 /**
@@ -37,7 +43,7 @@ introductionView.introduce = function addOpeningScreenButtonListener() {
 * Also adds button listeners to detect how many questions are going to be used.
 */
 function createWelcomePage(language) {
-	shrinkTitle(language);
+
 	introduceTest(language);
 	addTestSpecificationsListeners(language);
 }
@@ -87,23 +93,6 @@ function introduceTest(language) {
 	$openingScreen.html(intro);
 }
 
-/**
-* Shrinks the title 
-*
-*/
-function shrinkTitle(language) {
-	var $titleBar = $('#title-bar');
-	var $spanishTitle = $('#spanish-title');
-	var $englishTitle = $('#english-title');
-
-	if(language === 'spanish') {
-		$englishTitle.remove();
-	} else {
-		$spanishTitle.remove();
-	}
-}
-
-	window.introductionView = introductionView;
 
 
 })(this, this.document);

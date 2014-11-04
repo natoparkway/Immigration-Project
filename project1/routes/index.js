@@ -3,27 +3,21 @@ var express = require('express');
 var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('./html/' + 'index.html');
+  console.log('/');
+  res.render('introduction-view.ejs');
 });
+
+
+router.get('/english', function(req, res) {
+    //console.log(req.query);
+    res.render('instructions-view.ejs', {data: req.query});
+    console.log('/english');
+});
+
 
 /* GET Hello World page. */
 router.get('/helloworld', function(req, res) {
   res.render('helloworld', { title: 'Hello, World!' });
-});
-
-router.get('/results', function(req, res) {
-    res.render('results');
-});
-
-//GET Userlist page.
-router.get('/userlist', function(req, res) {
-  var db = req.db;
-  var collection = db.get('usercollection'); //the collection we want to use
-  collection.find({}, {}, function(e,docs) {
-    res.render('userlist', {
-      "userlist" : docs
-    });
-  });
 });
 
 /*

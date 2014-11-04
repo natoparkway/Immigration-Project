@@ -16,5 +16,6 @@
     "mongodb": "*",
     "monk": "*",
     "levenshtein": "~1.0"
+    "efs:" "~0.7.1"
   }
 }
