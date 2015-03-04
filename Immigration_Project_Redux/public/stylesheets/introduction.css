@@ -1,0 +1,25 @@
+#instructions{
+    text-align: center;
+    width: 66%;
+    margin: 0 auto;
+}
+
+#information{
+    font-size: 22px;
+    padding: 15px 0;
+    line-height: 130%;
+}
+
+#information p{
+    padding-bottom: 10px;
+}
+
+#instructions div button{
+    margin: 0 15px;
+}
+
+.descriptive-text {
+    padding-top: 30px;
+    font-size: 22px;
+    
+}

@@ -1,0 +1,79 @@
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #E6E6F7; 
+}
+
+/* Header CSS */
+header {
+    text-align: center;
+    background-color: #34495E; 
+    padding: 10px 0 1px 0;
+    color: #FFFFFF;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-weight: bold;
+    margin-top: 0px;
+}
+
+/* Instruction Page CSS */
+
+
+/* Question Page CSS */
+#question_form {
+    width: 66%;
+    margin: 0 auto;
+}
+
+#question_form h2{
+    font-size: 40px;
+}
+
+#answer-container{
+    margin: 25px auto;
+}
+
+#answer-container form{
+    display: block;
+    /*text-align: center;*/
+    margin: 0 auto;
+}
+
+
+#answer-container form label{
+    font-size: 120%;
+    padding-right: 5px;
+}
+
+#answer-container form input{
+    width: 80%;
+}
+
+#answer_input {
+    height:100px;
+    font-size:50px;
+}
+
+
+/* Solution Form CSS */
+/*
+#solution_form{
+    width: 66%;
+    margin: 0 auto;
+}
+
+#solution_form h1{
+    padding-bottom: 10px;
+}
+
+#solution_form h2, solution_form ul *{
+    color: #B85C00;
+}
+
+#solution_form ul li{
+    list-style: disc outside none;
+    font-size: 24px;
+}
+*/
