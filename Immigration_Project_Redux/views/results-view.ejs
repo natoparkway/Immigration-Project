@@ -1,7 +1,61 @@
+<header id="title-bar">
+  <% if(data.language === 'english') { %>
+      <h1>Cititzenship Test</h1>
+  <% } else { %>
+      <h1>Examen de Ciudadania</ht>
+  <% } %>
+</header>
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">  
+  	<% if(data.language === 'english') { %>
+      <h1>Results</h1>
+	  <% } else { %>
+	      <h1>Resultados</ht>
+	  <% } %></div>
+  </div>
+
+  <!-- List group -->
+  <ul class="list-group">
+
+  </ul>
+
+  <button type="button" id="return-to-start" class="btn btn-lg btn-primary">
+    	<% if(data.language === 'english') { %>
+      	Return to Start
+	  <% } else { %>
+	      Al Inicio
+	  <% } %></div>
+	</button>
+</div>
 
 
-
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+        <% if(data.language === 'english') { %>
+	      	Close
+		  	<% } else { %>
+		      Cerrar
+		  	<% } %>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Libraries -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/result.js"></script> 
+<script type="text/javascript" src="/javascripts/bootstrap.js"></script> 

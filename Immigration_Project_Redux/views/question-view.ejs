@@ -1,63 +1,62 @@
 <header id="title-bar">
-    <% if(!data.title) { %>
-        <h1>Cititzenship Test</h1>
-    <% } else { %>
-        <h1><%= data.title %></ht>
-    <% } %>
+  <% if(!data.title) { %>
+      <h1>Cititzenship Test</h1>
+  <% } else { %>
+      <h1><%= data.title %></h1>
+  <% } %>
 </header>
 
-<div id="main">
+  <div id="main">
     <div id="question_form">
-        <h3><%= data.number %>.</h3>
-        <h2><%= data.text %></h2>
-        <div id="answer-container">
-            <form>
-                <!-- Logic for Answer vs. Respuesta -->
-                <% if(data.language === 'english') { %>
-                    <label for="answer_input">Answer</label>
-                <% } else { %>
-                    <label for="answer_input">Respuesta</label>
-                <% } %>
+      <h3><%= data.number %>.</h3>
+      <h2><%= data.text %></h2>
+      <div id="answer-container">
+        <form>
+          <!-- Logic for Answer vs. Respuesta -->
+          <% if(data.language === 'english') { %>
+          <label for="answer_input">Answer</label>
+          <% } else { %>
+          <label for="answer_input">Respuesta</label>
+          <% } %>
 
-                <input type="text" id="answer_input">
-                <button id="submit_answer" class="btn btn-lg btn-primary main_button" type="button"> Submit </button>
-            </form>
-        </div>
+          <input type="text" id="answer_input">
+          <button id="submit_answer" class="btn btn-lg btn-primary main_button" type="button"> Submit </button>
+        </form>
+      </div>
     </div>
-</div>
+  </div>
 
- <script type="text/x-handlebars-template" id="answer-template">
- <div class="container-fluid">
+  <script type="text/x-handlebars-template" id="answer-template">
+  <div class="container-fluid">
 
-    <div class="row">
-        <div class="col-md-10">
-            <h1 id="answer-description">&quot;{{answer}}&quot; <b>{{description}}</b></h1>
-        </div>
-        <button id="nxt-btn" type="button" class="btn btn-primary btn-lg btn-block"> {{next}} </button>
+  <div class="row">
+    <div class="col-md-10">
+      <h1 id="answer-description">&quot;{{answer}}&quot; <b>{{description}}</b></h1>
     </div>
+    <button id="nxt-btn" type="button" class="btn btn-primary btn-lg btn-block"> {{next}} </button>
+  </div>
 
-    <div class = "row thin-row">
-        <h2 class="correct-answer"> {{correct_answers_description}} </h2>
+  <div class = "row thin-row">
+    <h2 class="correct-answer"> {{correct_answers_description}} </h2>
+  </div>
+
+  {{#each all_answers}}
+  <div class="row">
+    <div class="col-md-1"></div>
+      <div class="col-md-11">
+        <h3 class="correct-answer">{{this}}</h3>
+      </div>
     </div>
-
-    {{#each all_answers}}
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-11">
-            <h3 class="correct-answer">{{this}}</h3>
-        </div>
-    </div>
-    {{/each}}
-
-</div>
- </script>
+  </div>
+  {{/each}}
+  </script>
 
 
 
-<!-- Libraries -->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <!-- Libraries -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-<!-- JavaScript -->
-<script type="text/javascript" src="/javascripts/handlebars.js"></script>
-<script type="text/javascript" src="/javascripts/questions.js"></script>
-<script type="text/javascript" src="/javascripts/levenshtein.js"></script> 
+  <!-- JavaScript -->
+  <script type="text/javascript" src="/javascripts/handlebars.js"></script>
+  <script type="text/javascript" src="/javascripts/questions.js"></script>
+  <script type="text/javascript" src="/javascripts/levenshtein.js"></script> 

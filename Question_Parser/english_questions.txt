@@ -69,6 +69,7 @@ separation of powers
 
 15. Who is in charge of the executive branch?
 the President
+$president
 
 16. Who makes federal laws?
 Congress
@@ -91,11 +92,14 @@ six
 #6
 
 20. Who is one of your state’s U.S. Senators now?*
-Answers will vary. 
+Dianne Feinstein
+Barbara Boxer
+$Boxer
+$Feinstein
 
 21. The House of Representatives has how many voting members?
 $four hundred thirty-five 
-435
+#435
 
 22. We elect a U.S. Representative for how many years?
 $two
@@ -108,12 +112,13 @@ Answers will vary.
 all people of the state
 
 25. Why do some states have more Representatives than other states?
-(because of) the state’s population
-$the state's population
-(because) they have more people
-$they have more people
-(because) some states have more people
-$some state have more people
+They are larger
+$They are bigger
+$Because of the state's population
+They have more people
+$Because they have more people
+Some states have more people
+$Because some state have more people
 
 26. We elect a President for how many years?
 $four
@@ -137,15 +142,17 @@ the Vice President
 31. If both the President and the Vice President can no longer serve, who becomes President?
 the Speaker of the House
 
-
 32. Who is the Commander in Chief of the military?
 the President
+$president
 
 33. Who signs bills to become laws?
 the President
+$president
 
 34. Who vetoes bills?
 the President
+$president
 
 35. What does the President’s Cabinet do?
 advises the President
@@ -176,6 +183,7 @@ decides if a law goes against the Constitution
 
 38. What is the highest court in the United States?
 the Supreme Court
+$Supreme Court
 
 39. How many justices are on the Supreme Court?
 $nine
@@ -202,25 +210,29 @@ give a driver’s license
 approve zoning and land use
 
 43. Who is the Governor of your state now?
-Answers will vary.
+Jerry Brown.
 
 44. What is the capital of your state?*
-Answers will vary.
+Sacramento
 
 45. What are the two major political parties in the United States?*
 Democratic and Republican
 
 46. What is the political party of the President now?
-Democratic (Party)
+Democratic Party
+$The Democratic Party
+$Democratic
 
 47. What is the name of the Speaker of the House of Representatives now?
-(John) Boehner
+John Boehner
+$Boehner
 
 48. There are four amendments to the Constitution about who can vote. Describe one of them.
-Citizens eighteen (18) and older (can vote).
-You don’t have to pay (a poll tax) to vote.
-Any citizen can vote. (Women and men can vote.)
-A male citizen of any race (can vote).
+Citizens eighteen and older can vote.
+You don’t have to pay to vote.
+Any citizen can vote.
+Women and men can vote.
+A male citizen of any race can vote.
 
 49. What is one responsibility that is only for United States citizens?*
 serve on a jury
@@ -269,11 +281,11 @@ write to a newspaper
 56. When is the last day you can send in federal income tax forms?*
 April 15
 
-
 57. When must all men register for the Selective Service?
 at age eighteen
 #$18
 between eighteen and twenty-six
+$between 18 and 26
 
 58. What is one reason colonists came to America?
 freedom
@@ -287,14 +299,15 @@ escape persecution
 American Indians
 Native Americans
 
-
 60. What group of people was taken to America and sold as slaves?
 Africans
 people from Africa
 
 61. Why did the colonists fight the British?
-because of high taxes (taxation without representation)
-because the British army stayed in their houses (boarding, quartering)
+because of high taxes
+$taxation without representation
+because the British army stayed in their houses 
+$boarding and quartering
 because they didn’t have self-government
 
 62. Who wrote the Declaration of Independence?
@@ -371,8 +384,10 @@ economic reasons
 states’ rights
 
 75. What was one important thing that Abraham Lincoln did?*
-freed the slaves (Emancipation Proclamation)
-saved (or preserved) the Union
+freed the slaves
+$Emancipation Proclamation
+saved the Union
+$preserved the Union
 led the United States during the Civil War
 
 76. What did the Emancipation Proclamation do?
@@ -412,7 +427,9 @@ World War II
 Communism
 
 84. What movement tried to end racial discrimination?
-civil rights movement
+$Civil Rights
+$civil rights movement
+The Civil Rights Movement
 
 85. What did Martin Luther King, Jr. do?*
 fought for civil rights
@@ -446,14 +463,18 @@ Hopi
 Inuit
 
 88. Name one of the two longest rivers in the United States.
-Missouri (River)
-Mississippi (River)
+Missouri River
+Mississippi River
+$Missouri
+$Mississippi
 
 89. What ocean is on the West Coast of the United States?
-Pacific (Ocean)
+Pacific Ocean
+$Pacific
 
 90. What ocean is on the East Coast of the United States?
-Atlantic (Ocean)
+Atlantic Ocean
+$Atlantic
 
 91. Name one U.S. territory.
 Puerto Rico
@@ -495,13 +516,14 @@ $NYC
 $New York
 
 96. Why does the flag have 13 stripes?
-because there were 13 original colonies
-because the stripes represent the original colonies
+$because there were 13 original colonies
+For the 13 original colonies
+$because the stripes represent the original colonies
 
 97. Why does the flag have 50 stars?*
-because there is one star for each state
-because each star represents a state
-because there are 50 states
+$there is one star for each state
+Each star represents a state
+$there are 50 states
 
 98. What is the name of the national anthem?
 The Star-Spangled Banner

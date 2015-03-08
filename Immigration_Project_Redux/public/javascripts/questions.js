@@ -2,11 +2,16 @@
 
 var MIN_EDIT_DIST = 0.3;
 var NUM_QUESTIONS = 100;
+var isDone = false;
+var language;
 var $main = $('#main');
 var $answer_template = $('#answer-template')
 var handlebarsTemplates = {
 	renderAnswerPage: Handlebars.compile($answer_template.html())
 };
+
+//Set language
+language = window.location.pathname.split('/')[1];
 
 $('body').submit(function(event) {
 	event.preventDefault();
@@ -19,7 +24,8 @@ $('body').click(function(event) {
 	if(event.target.id === "nxt-btn") {
 		var path = window.location.pathname.split('/');
 		var next_q = Math.floor((Math.random() * NUM_QUESTIONS));
-		window.location.href = "/" + path[1] + "/questions/" + path[3] + "/" + next_q;
+		if(isDone) window.location.href = "/" + language + "/results"
+		else window.location.href = "/" + path[1] + "/questions/" + path[3] + "/" + next_q;
 	}
 	
 });
@@ -27,26 +33,27 @@ $('body').click(function(event) {
 function goToAnswerScreen() {
 	var id = window.location.pathname.split('/')[4];
 	var numQuestions = window.location.pathname.split('/')[3];
-	var language = window.location.pathname.split('/')[1];
 
 	var response = $('#answer_input').val();
 	if(response === "") return;
 	$.post("/" + language + "/" + numQuestions + "/" + id + "/" + response, function(data) {
-		if(data.isDone) window.location.href = "/" + language + "/results"
+		isDone = data.isDone;	//Set isDone flag if we have answered the allotted number of questions
 
 		var answers = data.answers;
-		var isCorrect = checkCorrectness(answers, response);
+		var isCorrect = checkCorrectness(answers, response, id);
 
 		createAnswerScreen(isCorrect, response, answers, language);
 	});
 }
 
-function checkCorrectness(answers, response) {
+function checkCorrectness(answers, response, id) {
 	var correct = false;
 	answers.forEach(function(answer) {
 		var edit_dist = new Levenshtein(answer.toLowerCase(), response.toLowerCase());
 		if(edit_dist / answer.length < MIN_EDIT_DIST) correct = true;
 	});
+
+	$.post("/" + language + "/" + id + "/" + correct, function(resposne){});
 
 	return correct;
 }
