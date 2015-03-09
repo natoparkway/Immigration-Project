@@ -529,6 +529,7 @@ porque las franjas representan las colonias originales
 porque hay una estrella por cada estado
 porque cada estrella representa un estado
 porque hay 50 estados
+$Hay 50 estados
 
 98. ¿Como se llama el himno nacional?
 The Star-Spangled Banner

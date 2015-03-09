@@ -29,9 +29,10 @@ function createResultsDisplay(answers, questions) {
 	if(!answers) answers = [];
 	for(var i = 0; i < answers.length; i++) {
 		if(!answers[i]) continue;	//Do nothing if question has not been asnwered
+		var correctClass = answers[i].correct ? 'correct' : 'incorrect';
 
 		$result = $('<button></button>')
-					.attr('class', 'btn result-btn')
+					.attr('class', 'btn result-btn ' + correctClass)
 					.attr('type', 'button')
 					.attr('data-toggle', 'modal')
 					.attr('data-target', '#myModal')
@@ -59,7 +60,8 @@ function addListeners(answers, questions) {
 			return;
 		}
 
-		if(event.target.className === 'btn result-btn') {
+		//Class also contains whether the answer was correct so we use indexOf
+		if(event.target.className.indexOf('btn result-btn') !== -1) {
 			var id = parseInt($(event.target).text());
 			var correct = answers[id].correct;
 			

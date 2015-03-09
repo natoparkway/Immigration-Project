@@ -40,6 +40,7 @@ $('body').submit(function(event) {
  */
 $('body').click(function(event) {
 	event.preventDefault();
+	if(event.target.id === "finish-btn") window.location.href = '/' + language + '/results';
 	if(event.target.id === "submit_answer") goToAnswerScreen();
 	if(event.target.id === "nxt-btn") {
 		var path = window.location.pathname.split('/');
@@ -119,6 +120,14 @@ function createAnswerScreen(isCorrect, response, answers, language) {
 
 	var answer_page_html = handlebarsTemplates.renderAnswerPage(answer_object);
 	$main.html(answer_page_html);
+}
+
+/*
+ * Displays instructions in a modal
+ *
+ */
+function displayInstructions() {
+
 }
 
 

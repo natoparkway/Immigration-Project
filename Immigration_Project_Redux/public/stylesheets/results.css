@@ -1,0 +1,16 @@
+.result-btn {
+	background-color: white;
+	font-size: 25px;
+}
+
+.correct {
+	background-color: #99CC00;
+}
+
+.incorrect {
+	background-color: #FF6666;
+}
+
+#their-answers, #all-answers {
+	font-size: 25px;
+}

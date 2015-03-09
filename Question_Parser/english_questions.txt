@@ -81,7 +81,7 @@ National legislature
 17. What are the two parts of the U.S. Congress?*
 the Senate and House 
 the Senate and the House of Representatives
-Senate and House of Representatives
+$Senate and House of Representatives
 
 18. How many U.S. Senators are there?
 one hundred
@@ -112,6 +112,8 @@ $Eshoo
 
 24. Who does a U.S. Senator represent?
 all people of the state
+$His state
+$Her state
 
 25. Why do some states have more Representatives than other states?
 They are larger
@@ -380,6 +382,7 @@ Spanish-American War
 
 73. Name the U.S. war between the North and the South.
 the Civil War
+$Civil War
 the War between the States
 
 74. Name one problem that led to the Civil War.
@@ -426,6 +429,7 @@ Japan, Germany, and Italy
 
 82. Before he was President, Eisenhower was a general. What war was he in?
 World War II
+$WWII
 
 83. During the Cold War, what was the main concern of the United States?
 Communism
@@ -522,6 +526,7 @@ $New York
 96. Why does the flag have 13 stripes?
 $because there were 13 original colonies
 For the 13 original colonies
+$There were thirteen original colonies
 $because the stripes represent the original colonies
 
 97. Why does the flag have 50 stars?*

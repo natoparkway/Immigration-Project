@@ -75,7 +75,7 @@ router.post('/:language/:num_questions/:id/:answer', function(req, res) {
 		question: all_questions[id].question
 	};
 
-	var done = req.session.qcount == req.params.num_questions;
+	var done = req.session.qcount >= req.params.num_questions;
 
 	res.send({
 		answers: all_questions[id].answers,
