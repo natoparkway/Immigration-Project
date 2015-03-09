@@ -1,10 +1,21 @@
 (function(window, document, undefined) {
 
+/*
+ * Javascript for spanish-into.ejs and english-intro.ejs. 
+ *
+ * Adds button listeners to the screen that detect which button has
+ * been pressed (the button indicates how many questions the user
+ * would like to take).
+ * 
+ * Then sets URL to the next page, question-view.
+ */
+
 var DEFAULT_QUESTIONS = 10;
 var NUM_QUESTIONS = 100;
 
 addTestSpecificationsListeners();
 
+//Add listeners 
 function addTestSpecificationsListeners() {
 	$('#instructions').click(function(event) {
 		event.preventDefault();

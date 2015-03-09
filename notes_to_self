@@ -1,5 +1,23 @@
-Add a class when a question is either correct or incorrect so that there is a clear color.
+Allow for answering of more than one question.
 
-Make the answers form larger.
+Notes from Visit, Novermber 6th:
+Use practicar, not tomar
+Larger Mouse
+Large Answer Form and make answers that are too long wrap around
+All fonts bigger
+No text if norm
 
-Write results-view.js
+NOTE: They are very slow typers
+
+Put how to answer instructions and the bottom of question-view.ejs
+
+Show the differene between their answer and the correct answer more explicity.
+
+Parsing:
+'S' and 'c' are the same letter.
+Any double letters can be one letter
+Ignore spaces
+
+Have "I don't know" button on answers page
+
+Change color of inccorect/correct answers

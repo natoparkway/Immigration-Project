@@ -1,5 +1,14 @@
 (function(window, document, undefined) {
 
+/*
+ * Javascript for main-page.ejs. 
+ *
+ * Adds button listeners to opening screen that detect which button has
+ * been pressed (the button indicates langauge).
+ * 
+ * Then sets URL to the according page.
+ */
+
 var $openingScreen = $('#main-page');
 var $questionTemplate = $('#question-template');
 var $introTemplate = $('#introduction-template');
@@ -7,9 +16,8 @@ var $introTemplate = $('#introduction-template');
 addOpeningScreenButtonListener();
 
 /*
- * Adds button listeners to the opening screen that detech whether a button indicating the user's language
+ * Adds button listeners to the opening screen that detect whether a button indicating the user's language
  * preference is picked.
- * Method then calls createWelcomePage.
  */
 function addOpeningScreenButtonListener() {
 	var language;

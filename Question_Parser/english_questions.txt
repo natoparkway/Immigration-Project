@@ -239,6 +239,8 @@ A male citizen of any race can vote.
 49. What is one responsibility that is only for United States citizens?*
 serve on a jury
 vote in a federal election
+$voting
+$jury duty
 
 50. Name one right only for United States citizens.
 vote in a federal election

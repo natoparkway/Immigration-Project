@@ -33,11 +33,11 @@
     <div class="col-md-10">
       <h1 id="answer-description">&quot;{{answer}}&quot; <b>{{description}}</b></h1>
     </div>
-    <button id="nxt-btn" type="button" class="btn btn-primary btn-lg btn-block"> {{next}} </button>
+    <button id="nxt-btn" type="button" class="btn btn-primary btn-lg center-block"> {{next}} </button>
   </div>
 
   <div class = "row thin-row">
-    <h2 class="correct-answer">{{correct_answers_description}}</h2>
+    <h2 class="correct-answer">{{correct_answers_description}}:</h2>
   </div>
 
   {{#each all_answers}}
@@ -47,8 +47,8 @@
         <h3 class="correct-answer">{{this}}</h3>
       </div>
     </div>
+    {{/each}}
   </div>
-  {{/each}}
   </script>
 
 
