@@ -25,7 +25,7 @@ function addTestSpecificationsListeners() {
 			//If input form button was hit
 			if(isNaN(event.target.firstChild.nodeValue)) {
 				var numQuestions = $('#num-questions-form').val();
-				if(isNaN(numQuestions)) numQuestions = DEFAULT_QUESTIONS;
+				if(isNaN(numQuestions) || numQuestions === "") numQuestions = DEFAULT_QUESTIONS;
 			} else var numQuestions = event.target.firstChild.nodeValue;
 
 			serveTest(numQuestions);

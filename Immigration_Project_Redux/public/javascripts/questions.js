@@ -44,7 +44,7 @@ $('body').click(function(event) {
 	if(event.target.id === "submit_answer") goToAnswerScreen();
 	if(event.target.id === "nxt-btn") {
 		var path = window.location.pathname.split('/');
-		var next_q = Math.floor((Math.random() * NUM_QUESTIONS));
+		var next_q = Math.floor((Math.random() * NUM_QUESTIONS)) + 1;
 
 		//If done, go to results page. Else just go to a new question
 		if(isDone) window.location.href = "/" + language + "/results"
