@@ -48,7 +48,7 @@ router.get('/:language/questions/:num_questions/:id', function(req, res) {
 	var question = {
 		title: req.session.header,
 		number: id,
-		text: all_questions[id].question,
+		text: all_questions[id - 1].question,
 		language: req.params.language
 	};
 
@@ -59,7 +59,7 @@ router.post('/:language/:num_questions/:id/:answer', function(req, res) {
 	var all_questions = spanish_questions;
 	if(req.params.language === 'english') all_questions = english_questions;
 	
-	var id = req.params.id;
+	var id = req.params.id - 1;	//Subtract 1 to account by off by one errors
 	var answer = req.params.answer;
 
 	if(!req.session.answers) req.session.answers = new Array(100);
@@ -72,7 +72,8 @@ router.post('/:language/:num_questions/:id/:answer', function(req, res) {
 	var done = req.session.qcount == req.params.num_questions;
 
 	res.send({
-		answers: all_questions[id].answers.concat(all_questions[id].alternatives),
+		answers: all_questions[id].answers,
+		alternatives: all_questions[id].alternatives,
 		isDone: done
 	});
 
@@ -82,7 +83,7 @@ router.post('/:language/:id/:isCorrect', function(req, res) {
 	var all_questions = spanish_questions;
 	if(req.params.language === 'english') all_questions = english_questions;
 	
-	var id = req.params.id;
+	var id = req.params.id - 1;	//Indexed at 0
 	var isCorrect = req.params.isCorrect === 'true';
 
 	req.session.answers[id].correct = isCorrect;
@@ -90,8 +91,9 @@ router.post('/:language/:id/:isCorrect', function(req, res) {
 	res.end();
 });
 
-router.get('/results/answers', function(req, res) {
-	res.send({answers: req.session.answers});
+router.get('/:language/results/answers/', function(req, res) {
+	var all_questions = req.params.language === 'english' ? english_questions : spanish_questions;
+	res.send({answers: req.session.answers, all_questions: all_questions});
 });
 
 router.get("/:language/results", function(req, res) {

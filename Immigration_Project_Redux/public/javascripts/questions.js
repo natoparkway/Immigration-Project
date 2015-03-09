@@ -40,15 +40,16 @@ function goToAnswerScreen() {
 		isDone = data.isDone;	//Set isDone flag if we have answered the allotted number of questions
 
 		var answers = data.answers;
-		var isCorrect = checkCorrectness(answers, response, id);
+		var alternatives = data.alternatives;
+		var isCorrect = checkCorrectness(answers, alternatives, response, id);
 
 		createAnswerScreen(isCorrect, response, answers, language);
 	});
 }
 
-function checkCorrectness(answers, response, id) {
+function checkCorrectness(answers, alternatives, response, id) {
 	var correct = false;
-	answers.forEach(function(answer) {
+	answers.concat(alternatives).forEach(function(answer) {
 		var edit_dist = new Levenshtein(answer.toLowerCase(), response.toLowerCase());
 		if(edit_dist / answer.length < MIN_EDIT_DIST) correct = true;
 	});
@@ -69,6 +70,7 @@ function createAnswerScreen(isCorrect, response, answers, language) {
 		correct_answers_description = "Correct answers include";
 		if(isCorrect) description = "is correct!";
 	}
+
 
 	var answer_object = {
 		description: description,

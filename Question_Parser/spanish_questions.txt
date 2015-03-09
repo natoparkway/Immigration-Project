@@ -1,5 +1,5 @@
 1. ¿Cual es la ley suprema de la nacion?
-la Constitucion
+La Constitucion
 
 2. ¿Que hace la Constitucion?
 establece el gobierno
@@ -10,9 +10,9 @@ protege los derechos basicos de los ciudadanos
 Nosotros el Pueblo
 
 4. ¿Que es una enmienda?
-un cambio (a la Constitucion)
+un cambio a la Constitucion
 $un cambio
-una adicion (a la Constitucion)
+una adicion a la Constitucion
 $una adicion
 
 5. ¿Con que nombre se conocen las primeras diez enmiendas a la Constitucion?
@@ -28,14 +28,14 @@ peticionar al gobierno
 7. ¿Cuantas enmiendas tiene la Constitucion?
 veintisiete (27)
 #27
-veintisiete
+$veintisiete
 
 8. ¿Que hizo la Declaracion de Independencia?
-anuncio nuestra independencia (de Gran Bretana)
+anuncio nuestra independencia de Gran Bretana
 $anuncio nuestra independencia
-declaro nuestra independencia (de Gran Bretana)
+declaro nuestra independencia de Gran Bretana
 $declaro nuestra independencia
-dijo que los Estados Unidos se independizo (de Gran Bretana)
+dijo que los Estados Unidos se independizo de Gran Bretana
 
 9. ¿Cual es un derecho en la Declaracion de la Independencia?
 la vida
@@ -47,6 +47,7 @@ Se puede practicar cualquier religion o no tener ninguna.
 
 11. ¿Cual es el sistema economico de los Estados Unidos?*
 economia capitalista
+$capitalista
 economia del mercado
 
 12. ¿En que consiste el “estado de derecho” (ley y orden)?
@@ -69,15 +70,17 @@ separacion de poderes
 
 15. ¿Quien esta a cargo de la rama ejecutiva?
 el Presidente
+$presidente
 
 16. ¿Quien crea las leyes federales?
 el Congreso
-el Senado y la Camara (de Representantes)
+el Senado y la Camara de Representantes
 $el Senado y la Camara
-la legislatura (nacional o de los Estados Unidos)
+la legislatura nacional
+$la legislatura de los Estados Unidos
 
 17. ¿Cuales son las dos partes que integran el Congreso de los Estados Unidos?*
-el Senado y la Camara (de Representantes)
+El Senado y la Camara de Representantes
 $el Seando y la Camara
 
 18. ¿Cuantos senadores de los Estados Unidos hay?
@@ -89,7 +92,10 @@ $seis
 #6
 
 20. Nombre a uno de los senadores actuales del estado donde usted vive.*
-Las respuestas variaran. Nosotros no podemos determinar si tu repuesta es correcta.
+Dianne Feinstein
+Barbara Boxer
+$Boxer
+$Feinstein
 
 21. ¿Cuantos miembros votantes tiene la Camara de Representantes? 
 $cuatrocientos treinta y cinco (435)
@@ -102,19 +108,20 @@ $dos (2)
 $dos
 
 23. De el nombre de su representante a nivel nacional.
-Las respuestas variaran. Nosotros no podemos determinar si tu repuesta es correcta.
+Anna Eshoo
+$Eshoo
 
 24. ¿A quienes representa un senador de los Estados Unidos?
-todas las personas del estado
+Todas las personas del estado
 
 25. ¿Por que tienen algunos estados mas representantes que otros?
-(debido a) la poblacion del estado
+Debido a la poblacion del estado
 $la poblacion del estado
 $tienen mas poblacion
-(debido a que) tienen mas gente
+Debido a que tienen mas gente
 $tienen mas gente
-(debido a que) algunos estados tienen mas gente
-$algunos estados tienen mas gente
+$Debido a que algunos estados tienen mas gente
+Algunos estados tienen mas gente
 
 26. ¿De cuantos anos es el termino de eleccion de un presidente?
 $cuatro (4)
@@ -134,6 +141,7 @@ $Biden
 
 30. Si el Presidente ya no puede cumplir sus funciones, ¿quien se vuelve Presidente?
 el Vicepresidente
+$Vicepresidente
 
 31. Si tanto el Presidente como el Vicepresidente ya no pueden cumplir sus funciones, ¿quien se vuelve 
 Presidente?
@@ -144,9 +152,11 @@ el Presidente
 
 33. ¿Quien firma los proyectos de ley para convertirlos en ley?
 el Presidente
+$presidente
 
 34. ¿Quien veta los proyectos de ley?
 el Presidente
+$presidente
 
 35. ¿Que hace el Gabinete del Presidente?
 asesora al Presidente
@@ -207,7 +217,7 @@ aprobar la zonificacion y uso de la tierra
 Las respuestas variaran. Nosotros no podemos determinar si tu repuesta es correcta.
 
 44. ¿Cual es la capital de su estado?*
-Las respuestas variaran. Nosotros no podemos determinar si tu repuesta es correcta.
+Sacramento
 
 45. ¿Cuales son los dos principales partidos politicos de los Estados Unidos?*
 Democrata y Republicano

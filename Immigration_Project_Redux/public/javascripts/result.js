@@ -3,26 +3,25 @@
 getUserAnswers();
 
 function getUserAnswers() {
-	//Try to get answers from local storage
-	// if("answers" in localStorage) {
-	// 	console.log("In local");
-	// 	createResultsDisplay(localStorage.getItem("answers"));
-	// 	return;
-	// }
-	//Post request to get question data
-	$.get('/results/answers', function(data) {
-		//localStorage.setItem("answers", JSON.stringify(data.answers));
-		createResultsDisplay(data.answers);
+	var language = window.location.href.split('/')[3];
+	$.get('/' + language + '/results/answers', function(data) {
+		createResultsDisplay(data.answers, data.all_questions);
 	});
 }
 
-function createResultsDisplay(answers) {
-	answers = [];
-	answers.push({
-		question: "Hello",
-		response: "World",
-		correct: true
-	});
+function createResultsDisplay(answers, questions) {
+	// answers = [];
+	// answers.push({
+	// 	question: "Hello",
+	// 	response: "World",
+	// 	correct: true
+	// });
+	// answers.push({
+	// 	question: "Goodbye",
+	// 	response: "Moon",
+	// 	correct: false
+	// });
+
 	$resultsList = $('.list-group');
 	if(!answers) answers = [];
 	for(var i = 0; i < answers.length; i++) {
@@ -41,14 +40,13 @@ function createResultsDisplay(answers) {
 		.appendTo($resultsList);
 	}
 
-	addListeners(answers);
+	addListeners(answers, questions);
 
 }
 
-function addListeners(answers) {
+function addListeners(answers, questions) {
 	var language = window.location.href.split('/')[3];
 	$("body").click(function(event) {
-		console.log(event.target);
 		if(event.target.id === 'return-to-start') {
 			window.location.href = "/";
 			return;
@@ -64,18 +62,27 @@ function addListeners(answers) {
 			if(language === 'spanish') correctText = correct ? "Correcto!" : "Incorrecto";
 
 			$('.modal-title').text(correctText);
-			$('.modal-body').text(youAnsweredText + answers[id].response);
+			$('#their-answers').text(youAnsweredText + answers[id].response);
 			
 			//If answer was not correct, list correct answers
-			if(!correct) {
-				var text = language === 'english' ? "Correct answers were: " : "Respuestas correctas incluyen: ";
-				$correctAnswers = $('<h4></h4>').text(text);
-				//Add all correct answers and some text: Doesn't work
-				$('.modal-content').append($correctAnswers);
-			}
+			createModal(language, questions[id].answers);
 		}
 
 	});
+}
+
+function createModal(language, correct_answers) {
+	var text = language === 'english' ? "Correct answers were: " : "Respuestas correctas incluyen: ";
+	$correctAnswers = $('<h4></h4>')
+										.text(text)
+										.attr('id', 'correct-answers-label');
+										
+	$('#all-answers').html($correctAnswers);
+	correct_answers.forEach(function(answer) {
+		$('<li></li>')
+		.text(answer)
+		.appendTo($('#all-answers'));
+	})
 }
 
 

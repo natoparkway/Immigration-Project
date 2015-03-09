@@ -10,8 +10,8 @@ protects basic rights of Americans
 We the People
 
 4. What is an amendment?
-a change (to the Constitution)
-an addition (to the Constitution)
+a change to the Constitution
+an addition to the Constitution
 
 5. What do we call the first ten amendments to the Constitution?
 the Bill of Rights
@@ -100,13 +100,15 @@ $Feinstein
 21. The House of Representatives has how many voting members?
 $four hundred thirty-five 
 #435
+$Four-hundred thirty-five
 
 22. We elect a U.S. Representative for how many years?
 $two
 #2
 
 23. Name your U.S. Representative.
-Answers will vary.
+Anna Eshoo
+$Eshoo
 
 24. Who does a U.S. Senator represent?
 all people of the state
@@ -129,7 +131,7 @@ November
 
 28. What is the name of the President of the United States now?*
 Barack Obama
-Obama
+$Obama
 
 29. What is the name of the Vice President of the United States now?
 $Joseph R. Biden, Jr.
