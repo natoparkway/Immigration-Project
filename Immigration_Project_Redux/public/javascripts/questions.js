@@ -10,6 +10,7 @@
 
 var MIN_EDIT_DIST = 0.3;
 var NUM_QUESTIONS = 100;
+var ENTER_KEY_CODE = 13;
 var isDone = false;
 var language;
 var $main = $('#main');
@@ -20,6 +21,16 @@ var handlebarsTemplates = {
 
 //Set language
 language = window.location.pathname.split('/')[1];
+
+/*
+ * If the user hits enter while '#nxt-btn' is on the screen, go to
+ * the next screen.
+ */
+$('body').bind('keydown', function(event) {
+	if(event.keyCode === ENTER_KEY_CODE) {
+		if($('#nxt-btn').length) goToNextQuestion();
+	}
+})
 
 /*
  * If the user hits enter, go to the answer screen (if there is text in the 
@@ -34,24 +45,31 @@ $('body').submit(function(event) {
  * If the user hits the 'submit' button go the answer screen (if there is
  * text in the submission box).
  *
- * If the server has indicated that the user has taken the allotted number of questions,
- * instead of going to a new question the method sets the URL to be that of the
- * results page.
+ * If the user hits the 'next' button, serve up a new question.
  */
 $('body').click(function(event) {
 	event.preventDefault();
 	if(event.target.id === "finish-btn") window.location.href = '/' + language + '/results';
 	if(event.target.id === "submit_answer") goToAnswerScreen();
-	if(event.target.id === "nxt-btn") {
-		var path = window.location.pathname.split('/');
-		var next_q = Math.floor((Math.random() * NUM_QUESTIONS)) + 1;
-
-		//If done, go to results page. Else just go to a new question
-		if(isDone) window.location.href = "/" + language + "/results"
-		else window.location.href = "/" + path[1] + "/questions/" + path[3] + "/" + next_q;
-	}
+	if(event.target.id === "nxt-btn") goToNextQuestion();
 	
 });
+
+/* 
+ * Serves up a new question page.
+ *
+ * If the server has indicated that the user has taken the allotted number of questions,
+ * instead of going to a new question the method sets the URL to be that of the
+ * results page. 
+ */
+function goToNextQuestion() {
+	var path = window.location.pathname.split('/');
+	var next_q = Math.floor((Math.random() * NUM_QUESTIONS)) + 1;
+
+	//If done, go to results page. Else just go to a new question
+	if(isDone) window.location.href = "/" + language + "/results"
+	else window.location.href = "/" + path[1] + "/questions/" + path[3] + "/" + next_q;
+}
 
 /*
  * Creates an answer screen to the given question and renders it on screen
