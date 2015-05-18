@@ -1,5 +1,3 @@
-(function(window, document, undefined) {
-
 /*
  * Javascript for question-view.ejs. 
  *
@@ -11,8 +9,11 @@
 var MIN_EDIT_DIST = 0.3;
 var NUM_QUESTIONS = 100;
 var ENTER_KEY_CODE = 13;
+var JARO_WINKLER_CORRECT = 0.85;
+var JARO_WINKLER_CLOSE = 0.75;
 var isDone = false;
 var language;
+var usedQuestions = []
 var $main = $('#main');
 var $answer_template = $('#answer-template')
 var handlebarsTemplates = {
@@ -66,6 +67,11 @@ function goToNextQuestion() {
 	var path = window.location.pathname.split('/');
 	var next_q = Math.floor((Math.random() * NUM_QUESTIONS)) + 1;
 
+	//We want a new, unique question
+	while(usedQuestions.indexOf(next_q) != -1) {
+		next_q = Math.floor((Math.random() * NUM_QUESTIONS)) + 1;
+	}
+
 	//If done, go to results page. Else just go to a new question
 	if(isDone) window.location.href = "/" + language + "/results"
 	else window.location.href = "/" + path[1] + "/questions/" + path[3] + "/" + next_q;
@@ -87,10 +93,26 @@ function goToAnswerScreen() {
 		var answers = data.answers;
 		var alternatives = data.alternatives;
 		var isCorrect = checkCorrectness(answers, alternatives, response, id);
+		//var isClose = checkCorrectnessByJaroWinkler(answers.concat(alternatives), response);
 
 		createAnswerScreen(isCorrect, response, answers, language);
 	});
 }
+
+// function checkCorrectnessByJaroWinkler(all_answers, response) {
+// 	var isClose = false;
+// 	var isCorrect = false;
+
+// 	response = response.replace(/\s+/g, '');	//Removes all spaces
+
+// 	all_answers.forEach(function(answer) {
+// 		answer = answer.replace(/\s+/g, '');
+// 		var jaroWinkler = natural.JaroWinklerDistance(answer, response);
+//    		console.log(jaroWinkler);
+// 		if(jaroWinkler > JARO_WINKLER_CLOSE) isClose = true;
+// 	});
+//   return isClose;
+// }
 
 /*
  * Checks the correctness of a given question using edit distance.
@@ -105,10 +127,15 @@ function checkCorrectness(answers, alternatives, response, id) {
 		if(edit_dist / answer.length < MIN_EDIT_DIST) correct = true;
 	});
 
-	$.post("/" + language + "/" + id + "/" + correct, function(resposne){});
+
+	$.post("/" + language + "/" + id + "/" + correct, function(response){
+		usedQuestions = response["usedQuestions"]
+
+	});
 
 	return correct;
 }
+
 
 /*
  * Creates the answer screen (which displays whether the user was correct)
@@ -119,7 +146,10 @@ function createAnswerScreen(isCorrect, response, answers, language) {
 	var description = "es correcta!";
 	var next_str = "Proixima Pregunta"
 	var correct_answers_description = "Respuestas correctas incluyen";
-	if(language === 'spanish' && !isCorrect) description = "no es correcta.";
+	if(language === 'spanish'){
+		if(!isCorrect) description = "no es correcta.";
+	} 
+	
 	if(language === 'english') {
 		description = "is incorrect.";
 		next_str = "Next Question";
@@ -147,6 +177,3 @@ function createAnswerScreen(isCorrect, response, answers, language) {
 function displayInstructions() {
 
 }
-
-
-})(this, this.document);	

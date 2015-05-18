@@ -5,6 +5,8 @@ var router = express.Router();
 var english_questions;
 var spanish_questions;
 
+var seen_questions = [];
+
 //Get questions data and store them in global variables.
 var fs = require('fs');
 fs.readFile('data/english-questions.json', 'utf8', function (error, data) {
@@ -47,8 +49,7 @@ router.get('/:language', function(req, res) {
 router.get('/:language/questions/:num_questions/:id', function(req, res) {
 	req.session.qcount++;	//Increment how many questions we've seen
 	var all_questions = req.params.language === 'english' ? english_questions : spanish_questions;
-
-	var id = req.params.id;
+	var id = parseInt(req.params.id);
 	var question = {
 		title: req.session.header,
 		number: id,
@@ -62,10 +63,9 @@ router.get('/:language/questions/:num_questions/:id', function(req, res) {
 //Posts information about the user's answer for later use.
 //Stores it in req.session.answers
 router.post('/:language/:num_questions/:id/:answer', function(req, res) {
+	seen_questions.push(parseInt(req.params.id));
 	var all_questions = req.params.language === 'english' ? english_questions : spanish_questions;
-
-	
-	var id = req.params.id - 1;	//Subtract 1 to account by off by one errors
+	var id = parseInt(req.params.id) - 1;	//Subtract 1 to account by off by one errors
 	var answer = req.params.answer;
 
 	if(!req.session.answers) req.session.answers = new Array(100);	//In case the user starts on this page without going to start.
@@ -89,12 +89,12 @@ router.post('/:language/:num_questions/:id/:answer', function(req, res) {
 router.post('/:language/:id/:isCorrect', function(req, res) { 
 	var all_questions = req.params.language === 'english' ? english_questions : spanish_questions;
 
-	var id = req.params.id - 1;	//Indexed at 0
+	var id = parseInt(req.params.id) - 1;	//Indexed at 0
 	var isCorrect = req.params.isCorrect === 'true';
 
 	req.session.answers[id].correct = isCorrect;
 
-	res.end();
+	res.send({usedQuestions: seen_questions});
 });
 
 //Sends users answered question data
